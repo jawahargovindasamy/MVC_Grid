@@ -1,0 +1,23 @@
+﻿ @model IEnumerable<MVC_Webgrid.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Display Records In WebGrid</h2>
+<hr />
+@{ 
+    WebGrid wbgrid = new WebGrid(source: Model,rowsPerPage:5);
+}
+@wbgrid.GetHtml(
+    tableStyle:"table",
+    htmlAttributes: new {@id="wbgrid"},
+    columns:wbgrid.Columns(
+        wbgrid.Column("Id","Id"),
+        wbgrid.Column("Name", "Name"),
+        wbgrid.Column("Email", "Email"),
+        wbgrid.Column("Salary", "Salary") 
+        )
+    )   
+
+
